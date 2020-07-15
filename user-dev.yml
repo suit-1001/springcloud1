@@ -1,0 +1,37 @@
+server:
+  port: 9111 #9222
+spring:
+  application:
+    name: microservice-user
+
+  datasource:
+    url: jdbc:mysql://192.168.43.11:3306/springcloud?characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123123
+
+  jpa:
+    database: mysql #底层数据库的类型是mysql
+    generate-ddl: true #自动生成建表语句
+    show-sql: true #是否在控制台中显示sql语句
+
+#配置eureka客户端(单机版)
+eureka:
+  client:
+    register-with-eureka: true #作为客户端注册到eureka server上，服务提供者关键
+    fetch-registry: true #向服务器端索要服务
+    service-url: #向服务器端注册服务地址
+      defaultZone: http://127.0.0.1:8888/eureka
+  instance:
+    prefer-ip-address: true #注册时优先使用ip地址
+    lease-renewal-interval-in-seconds: 10 #默认30，服务提供者关键
+    lease-expiration-duration-in-seconds: 30 #默认90，服务提供者关键
+#配置eureka客户端(集群版)
+#eureka:
+#      client:
+#        register-with-eureka: true #作为客户端注册到eureka server上
+#        fetch-registry: true #向服务器端索要服务
+#        service-url: #向服务器端注册服务地址
+#          defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+#      instance:
+#        prefer-ip-address: true #注册时优先使用ip地址
