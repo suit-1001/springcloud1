@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: microservice-movie   #微服务/项目名
+  zipkin:
+    base-url: http://127.0.0.1:13000 #zipkin端口
+    sender:
+      type: web #通过web服务器给zipkin发送信息
+  sleuth:
+    sampler:
+      probability: 1 #zipkin利用内置的sleuth组件采集日志信息的概率：0.1代表10%;1代表100%
 
 #配置eureka客户端(单机版)
 eureka:
