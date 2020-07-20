@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: microservice-user
+  zipkin:
+    base-url: http://127.0.0.1:13000
+    sender:
+      type: web #通过web服务器给zipkin发送信息
+  sleuth:
+    sampler:
+      probability: 1 #zipkin利用内置的sleuth组件采集日志信息的概率：0.1代表10%;1代表100%
 
   datasource:
     url: jdbc:mysql://192.168.43.11:3306/springcloud?characterEncoding=utf-8 #3307
